@@ -1,7 +1,9 @@
 package com.example.hackatonmpc.Service.AdminService;
 
+import com.example.hackatonmpc.DTO.RegisterDTO;
 import com.example.hackatonmpc.Entity.AdminEntity;
 import com.example.hackatonmpc.Repository.AdminRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -22,6 +24,10 @@ public class AdminServiceDB {
         } else {
             throw new NullPointerException();
         }
+    }
+    public ResponseEntity<?> adminRegister(AdminEntity adminEntity) {
+        adminRepository.save(adminEntity);
+        return ResponseEntity.ok("Success");
     }
 
 
