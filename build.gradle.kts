@@ -1,3 +1,6 @@
 plugins {
-    alias(libs.plugins.kotlin.multiplatform).apply(false)
+    alias(libs.plugins.jvm).apply(false)
 }
+
+group = "ru.cruch-team"
+version = "0.0.1-SNAPSHOT"
