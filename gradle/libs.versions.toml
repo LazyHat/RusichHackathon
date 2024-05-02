@@ -1,13 +1,13 @@
 [versions]
 
 kotlin = "1.9.23"
-compose = "1.6.1"
+compose = "1.6.2"
 voyager = "1.0.0"
 composeImageLoader = "1.7.8"
 napier = "2.7.1"
 buildConfig = "4.1.1"
 kotlinx-coroutines = "1.8.0"
-ktor = "2.3.9"
+ktor = "2.3.10"
 kotlinx-serialization = "1.6.3"
 
 [libraries]
@@ -29,7 +29,6 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 
 [plugins]
 
-kotlin-core = { id = "org.jetbrains.kotlin.core", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 buildConfig = { id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig" }

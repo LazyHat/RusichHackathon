@@ -4,5 +4,4 @@ plugins {
 
 rootProject.name = "rusich-hackathon"
 
-include("backend",  "frontend", "shared")
-include("untitled")
+include("backend",  "frontend")
