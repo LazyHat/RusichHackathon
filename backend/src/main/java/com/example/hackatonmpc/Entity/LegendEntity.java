@@ -9,21 +9,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class UserEntity {
+public class LegendEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String login;
-    private String password;
+    private String legendName;
+    private String legendAge;
+    private String legendAchievements;
+    private String legendHobby;
+    private String legendOtherDescription;
 
-    private LocalDateTime registrationDate;
+    private String legendPhoto;//may be in DB in future
 
 }
