@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -31,8 +33,10 @@ public class DefaultTokenUserService {
 
         Instant now = Instant.now();
         Instant exp = now.plus(120, ChronoUnit.MINUTES);
-
+        Map<String, Object> bodyClaims = new HashMap<>();
+        bodyClaims.put("role", "user");
         return JWT.create()
+                .withClaim("customValue", bodyClaims )
                 .withSubject(userId.toString())
                 .withIssuedAt(Date.from(now))
                 .withExpiresAt(Date.from(exp))

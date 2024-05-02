@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
-    private final AdminLoginService adminLoginService;
+    public AdminLoginService adminLoginService;
 
     public AdminController(AdminLoginService adminLoginService) {
         this.adminLoginService = adminLoginService;

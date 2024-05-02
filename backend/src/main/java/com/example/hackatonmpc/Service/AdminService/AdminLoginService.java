@@ -22,7 +22,6 @@ public class AdminLoginService {
             AdminEntity admin = adminServiceDB.getAdminByLogin(LoginDTO.getLogin());
             if (bCryptPasswordEncoder.matches(LoginDTO.getPassword(), admin.getPassword())) {
                 String token =tokenAdminService.generateToken(admin.getId());
-
                 return ResponseEntity.ok(token);
             } else {
                 return ResponseEntity.status(401).body("Wrong login or password");

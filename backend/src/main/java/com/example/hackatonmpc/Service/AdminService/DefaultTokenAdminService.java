@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 @Service
 public class DefaultTokenAdminService {
@@ -29,8 +31,10 @@ public class DefaultTokenAdminService {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
         Instant now = Instant.now();
         Instant exp = now.plus(120, ChronoUnit.MINUTES);
-
+        Map<String, Object> bodyClaims = new HashMap<>();
+        bodyClaims.put("role", "user");
         return JWT.create()
+                .withClaim("customValue", bodyClaims )
                 .withSubject(id.toString())
                 .withIssuedAt(Date.from(now))
                 .withExpiresAt(Date.from(exp))
