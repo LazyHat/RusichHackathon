@@ -1,6 +1,7 @@
 package com.example.hackatonmpc.Controller;
 
 import com.example.hackatonmpc.DTO.LoginDTO;
+import com.example.hackatonmpc.DTO.RegisterAdminDTO;
 import com.example.hackatonmpc.DTO.RegisterDTO;
 import com.example.hackatonmpc.Service.AdminService.AdminLoginService;
 import com.example.hackatonmpc.Service.AdminService.AdminRegisterService;
@@ -26,7 +27,14 @@ public class AdminController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> adminRegister(RegisterDTO registerDTO){
-        return adminRegisterService.adminRegister(registerDTO);
+    public ResponseEntity<?> adminRegister(RegisterAdminDTO registerAdminDTO){
+        if(!registerAdminDTO.getSecretWord().equals("P@ssw0rd")){
+            return ResponseEntity.status(401).body("No");//TODO (временно)
+        }
+        return adminRegisterService.adminRegister(registerAdminDTO);
+    }
+    @PostMapping("/userRegister")
+    public ResponseEntity<?> userRegister(RegisterDTO registerDTO){
+        return adminRegisterService.userRegister(registerDTO);
     }
 }

@@ -1,8 +1,10 @@
 package com.example.hackatonmpc.Service.AdminService;
 
-import com.example.hackatonmpc.DTO.RegisterDTO;
+
 import com.example.hackatonmpc.Entity.AdminEntity;
+import com.example.hackatonmpc.Entity.UserEntity;
 import com.example.hackatonmpc.Repository.AdminRepository;
+import com.example.hackatonmpc.Repository.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,11 @@ import java.util.Optional;
 public class AdminServiceDB {
 
     private final AdminRepository adminRepository;
+    private final UserRepository userRepository;
 
-    public AdminServiceDB(AdminRepository adminRepository) {
+    public AdminServiceDB(AdminRepository adminRepository, UserRepository userRepository) {
         this.adminRepository = adminRepository;
+        this.userRepository = userRepository;
     }
 
     public AdminEntity getAdminByLogin(String login) throws NullPointerException {
@@ -30,6 +34,10 @@ public class AdminServiceDB {
         return ResponseEntity.ok("Success");
     }
 
+    public ResponseEntity<?> userRegister(UserEntity userEntity){
+        userRepository.save(userEntity);
+        return ResponseEntity.ok("Success");
+    }
 
 }
 

@@ -32,7 +32,7 @@ public class DefaultTokenAdminService {
         Instant now = Instant.now();
         Instant exp = now.plus(120, ChronoUnit.MINUTES);
         Map<String, Object> bodyClaims = new HashMap<>();
-        bodyClaims.put("role", "user");
+        bodyClaims.put("role", "admin");
         return JWT.create()
                 .withClaim("customValue", bodyClaims )
                 .withSubject(id.toString())
@@ -49,10 +49,6 @@ public class DefaultTokenAdminService {
         JWTVerifier verifier = JWT.require(algorithm).build();
         try {
             DecodedJWT decodedJWT = verifier.verify(token);
-            if (!decodedJWT.getIssuer().equals("userService")) {
-                System.out.println("Issuer is incorrect");
-                return false;
-            }
             if (!checkId(Long.valueOf(decodedJWT.getSubject()))) {
                 System.out.println("Id is incorrect");
                 return false;
@@ -61,7 +57,6 @@ public class DefaultTokenAdminService {
             System.out.println("Token is invalid: " + e.getMessage());
             return false;
         }
-
         return true;
     }
     public Long getIdFromToken(String checkedToken) {

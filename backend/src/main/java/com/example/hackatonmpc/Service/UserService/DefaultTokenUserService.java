@@ -51,10 +51,6 @@ public class DefaultTokenUserService {
         JWTVerifier verifier = JWT.require(algorithm).build();
         try {
             DecodedJWT decodedJWT = verifier.verify(token);
-            if (!decodedJWT.getIssuer().equals("userService")) {
-                System.out.println("Issuer is incorrect");
-                return false;
-            }
             if (!checkId(Long.valueOf(decodedJWT.getSubject()))) {
                 System.out.println("Id is incorrect");
                 return false;
